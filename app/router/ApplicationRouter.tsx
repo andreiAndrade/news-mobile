@@ -1,13 +1,14 @@
-// import React from 'react'
+import React from 'react'
 import { Platform, StatusBar } from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
-// import { FontAwesome } from 'react-native-vector-icons'
+import { Icon } from '../components/'
 
 import {
   Home,
   Profile,
   SignIn,
-  SignUp
+  SignUp,
+  Welcome
 } from '../screens/'
 
 const headerStyle = {
@@ -15,6 +16,12 @@ const headerStyle = {
 }
 
 export const SignedOut = StackNavigator({
+  Welcome: {
+    screen: Welcome,
+    navigationOptions: {
+      header: null
+    }
+  },
   SignUp: {
     screen: SignUp,
     navigationOptions: {
@@ -29,24 +36,24 @@ export const SignedOut = StackNavigator({
       headerStyle
     }
   }
-})
+}, {initialRouteName: 'Welcome'})
 
 export const SignedIn = TabNavigator(
   {
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarLabel: 'Home'
-        // tabBarIcon: ({ tintColor }) =>
-        //   <FontAwesome name='home' size={30} color={tintColor} />
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ tintColor }) =>
+          <Icon name='ios-film' size={30} color={tintColor} />
       }
     },
     Profile: {
       screen: Profile,
       navigationOptions: {
-        tabBarLabel: 'Profile'
-        // tabBarIcon: ({ tintColor }) =>
-        //   <FontAwesome name='user' size={30} color={tintColor} />
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({ tintColor }) =>
+          <Icon name='ios-person' size={30} color={tintColor} />
       }
     }
   },
