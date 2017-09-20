@@ -7,7 +7,7 @@
     "test": "jest --coverage",
     "ios": "npm run build && concurrently -r 'npm run watch' 'react-native run-ios'",
     "android": "npm run build && concurrently -r 'npm run watch' 'react-native run-android'",
-    "app": "react-native start",
+    "app": "npm run build && concurrently -r 'npm run watch' 'react-native start'",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
