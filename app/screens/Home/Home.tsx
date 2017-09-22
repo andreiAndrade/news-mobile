@@ -1,7 +1,6 @@
 import React from 'react'
 import { ScrollView, Text, View, TouchableOpacity } from 'react-native'
-import { Card } from 'react-native-elements'
-import { Icon } from '../../components'
+import { Card, Icon } from 'react-native-elements'
 
 const news = [
   {
@@ -43,7 +42,7 @@ export default () => (
             </Text>
             <View style={{ flexDirection: 'row', alignSelf: 'flex-end', marginHorizontal: 10 }}>
               <TouchableOpacity onPress={() => alert('bookmark')}>
-                <Icon name='ios-bookmark' style={{ fontSize: 25 }} />
+                <Icon type='ionicon' name='ios-bookmark' style={{ fontSize: 25 }} />
               </TouchableOpacity>
             </View>
           </Card>

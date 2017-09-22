@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform, StatusBar } from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import { Icon } from '../components/'
+import { Icon } from 'react-native-elements'
 
 import {
   Home,
@@ -45,7 +45,7 @@ export const SignedIn = TabNavigator(
       navigationOptions: {
         tabBarLabel: 'Home',
         tabBarIcon: ({ tintColor }) =>
-          <Icon name='ios-film' size={30} color={tintColor} />
+          <Icon type='ionicon' name='ios-film' size={30} color={tintColor} />
       }
     },
     Profile: {
@@ -53,7 +53,7 @@ export const SignedIn = TabNavigator(
       navigationOptions: {
         tabBarLabel: 'Profile',
         tabBarIcon: ({ tintColor }) =>
-          <Icon name='ios-person' size={30} color={tintColor} />
+          <Icon type='ionicon' name='ios-person' size={30} color={tintColor} />
       }
     }
   },
