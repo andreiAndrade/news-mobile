@@ -8,6 +8,7 @@ import {
   Profile,
   SignIn,
   SignUp,
+  FillPassword,
   Welcome
 } from '../screens/'
 
@@ -26,6 +27,13 @@ export const SignedOut = StackNavigator({
     screen: SignUp,
     navigationOptions: {
       title: 'Sign Up',
+      headerStyle
+    }
+  },
+  FillPassword: {
+    screen: FillPassword,
+    navigationOptions: {
+      title: 'Fill Password',
       headerStyle
     }
   },

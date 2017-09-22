@@ -1,13 +1,10 @@
 import React from 'react'
-import { View, ScrollView } from 'react-native'
-import { Card, FormLabel, FormInput, Avatar } from 'react-native-elements'
+import { Card, FormLabel, Avatar } from 'react-native-elements'
 import { onSignIn } from '../../security'
-import { colors } from '../../assets/styles'
-import { MButton, MFormInput } from '../../components'
+import { MButton, MFormInput, MContainer } from '../../components'
 
 export default ({ navigation }) => (
-  <View style={{ flex: 1 }}>
-    <ScrollView contentContainerStyle={{paddingBottom: 20}}>
+  <MContainer scrollable>
     <Card title='Seja muito bem vindo a melhor fonte de informação.'>
       <Avatar
         xlarge
@@ -18,23 +15,20 @@ export default ({ navigation }) => (
         containerStyle={{ alignSelf: 'center' }}
       />
       <FormLabel>Email</FormLabel>
-      <MFormInput placeholder='Email address...' containerStyle={{borderBottomColor: colors.primaryColor}} selectionColor={colors.primaryColor} />
+      <MFormInput placeholder='Email address...' />
       <FormLabel>Primeiro Nome</FormLabel>
-      <FormInput placeholder='Primeiro Nome...' />
+      <MFormInput placeholder='Primeiro Nome...' />
       <FormLabel>Último Sobrenome</FormLabel>
-      <FormInput placeholder='Último Sobrenome...' />
-      <FormLabel>Último Sobrenome</FormLabel>
-      <FormInput placeholder='Último Sobrenome...' />
+      <MFormInput placeholder='Último Sobrenome...' />
+      <FormLabel>Data de Nascimento</FormLabel>
+      <MFormInput placeholder='Data de Nascimento...' />
 
       <MButton
-        buttonStyle={{ marginTop: 20 }}
-        backgroundColor={colors.primaryColor}
-        title='NEXT'
+        title='SIGN UP'
         onPress={() => {
-          onSignIn().then(() => navigation.navigate('SignedIn'))
+          onSignIn().then(() => navigation.navigate('FillPassword'))
         }}
       />
     </Card>
-    </ScrollView>
-  </View>
+  </MContainer>
 )

@@ -1,0 +1,26 @@
+import React from 'react'
+import { View, ViewProperties, ScrollView } from 'react-native'
+import { colors } from '../assets/styles'
+
+interface ViewProps extends ViewProperties {
+    scrollable?: boolean
+}
+const MView: React.SFC<ViewProps> = (props) => {
+    return props.scrollable ? (
+        <View style={{ flex: 1, backgroundColor: colors.primary }} {...props }>
+            <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
+                {props.children}
+            </ScrollView>
+        </View >
+    ) : (
+        <View style={{ flex: 1, backgroundColor: colors.secondarylight, paddingVertical: 20 }} {...props }>
+            {props.children}
+        </View >
+    )
+}
+
+MView.defaultProps = {
+    scrollable: false
+}
+
+export default MView

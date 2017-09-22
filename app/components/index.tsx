@@ -1,3 +1,4 @@
 import MButton from './MButton'
 import MFormInput from './MFormInput'
-export { MButton, MFormInput }
+import MContainer from './MContainer'
+export { MButton, MFormInput, MContainer }

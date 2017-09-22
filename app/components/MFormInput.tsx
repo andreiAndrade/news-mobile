@@ -14,7 +14,7 @@ class MFormInput extends React.Component<FormInput.propTypes, State> {
 
     onFocus = () => {
         this.setState({
-            color: colors.primaryColor
+            color: colors.secondary
         })
     }
 
@@ -30,6 +30,7 @@ class MFormInput extends React.Component<FormInput.propTypes, State> {
             <FormInput
                 {...this.props}
                 containerStyle={this.state.color ? {borderBottomColor: this.state.color} : {}}
+                selectionColor={this.state.color || 'lightgray'}
                 inputStyle={this.state.color ? {color: this.state.color} : {}}
                 onFocus={() => this.onFocus()}
                 onBlur={() => this.onBlur()}
