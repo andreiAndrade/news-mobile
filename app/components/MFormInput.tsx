@@ -6,7 +6,7 @@ interface State {
     color: string
 }
 
-class MFormInput extends React.Component<FormInput.propTypes, State> {
+export default class MFormInput extends React.Component<FormInput.propTypes, State> {
     constructor() {
         super()
         this.state = {color: undefined}
@@ -14,7 +14,7 @@ class MFormInput extends React.Component<FormInput.propTypes, State> {
 
     onFocus = () => {
         this.setState({
-            color: colors.secondary
+            color: colors.primary
         })
     }
 
@@ -38,5 +38,3 @@ class MFormInput extends React.Component<FormInput.propTypes, State> {
         )
     }
 }
-
-export default MFormInput

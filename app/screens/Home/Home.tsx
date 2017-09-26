@@ -1,6 +1,8 @@
 import React from 'react'
-import { ScrollView, Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 import { Card, Icon } from 'react-native-elements'
+
+import { MContainer } from '../../components'
 
 const news = [
   {
@@ -30,24 +32,22 @@ const news = [
 ]
 
 export default () => (
-  <View style={{ flex: 1 }}>
-    <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-      {news.map(({ key, title, description }) => (
-        <TouchableOpacity key={key} onPress={() => alert('Press')}>
-          <Card
-            title={title}
-            image={{ uri: 'https://i.pinimg.com/600x315/d4/09/17/d409174d62fc768e9e6690c0e1c4143f.jpg' }}>
-            <Text style={{ marginBottom: 10 }}>
-              { description }
-            </Text>
-            <View style={{ flexDirection: 'row', alignSelf: 'flex-end', marginHorizontal: 10 }}>
-              <TouchableOpacity onPress={() => alert('bookmark')}>
-                <Icon type='ionicon' name='ios-bookmark' style={{ fontSize: 25 }} />
-              </TouchableOpacity>
-            </View>
-          </Card>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  </View>
+  <MContainer scrollable>
+    {news.map(({ key, title, description }) => (
+      <TouchableOpacity key={key} onPress={() => alert('Press')}>
+        <Card
+          title={title}
+          image={{ uri: 'https://i.pinimg.com/600x315/d4/09/17/d409174d62fc768e9e6690c0e1c4143f.jpg' }}>
+          <Text style={{ marginBottom: 10 }}>
+            {description}
+          </Text>
+          <View style={{ flexDirection: 'row', alignSelf: 'flex-end', marginHorizontal: 10 }}>
+            <TouchableOpacity onPress={() => alert('bookmark')}>
+              <Icon type='ionicon' name='ios-bookmark' style={{ fontSize: 25 }} />
+            </TouchableOpacity>
+          </View>
+        </Card>
+      </TouchableOpacity>
+    ))}
+  </MContainer>
 )

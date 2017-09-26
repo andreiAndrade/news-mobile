@@ -1,34 +1,58 @@
 import React from 'react'
-import { Card, FormLabel, Avatar } from 'react-native-elements'
-import { onSignIn } from '../../security'
-import { MButton, MFormInput, MContainer } from '../../components'
+import { Card, Avatar } from 'react-native-elements'
+import t from 'tcomb-form-native'
+import autobind from 'autobind-decorator'
 
-export default ({ navigation }) => (
-  <MContainer scrollable>
-    <Card title='Seja muito bem vindo a melhor fonte de informação.'>
-      <Avatar
-        xlarge
-        rounded
-        source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }}
-        onPress={() => console.log('Works!')}
-        activeOpacity={0.7}
-        containerStyle={{ alignSelf: 'center' }}
-      />
-      <FormLabel>Email</FormLabel>
-      <MFormInput placeholder='Email address...' />
-      <FormLabel>Primeiro Nome</FormLabel>
-      <MFormInput placeholder='Primeiro Nome...' />
-      <FormLabel>Último Sobrenome</FormLabel>
-      <MFormInput placeholder='Último Sobrenome...' />
-      <FormLabel>Data de Nascimento</FormLabel>
-      <MFormInput placeholder='Data de Nascimento...' />
+import { MButton, MContainer, MForm } from '../../components'
+import { Email, Age } from '../../utils/FormInputTypes'
 
-      <MButton
-        title='SIGN UP'
-        onPress={() => {
-          onSignIn().then(() => navigation.navigate('FillPassword'))
-        }}
-      />
-    </Card>
-  </MContainer>
-)
+export default class SignUp extends React.Component<any, any> {
+
+  signUpForm: any
+  _refSignUpForm: any
+
+  constructor(props) {
+    super(props)
+
+    this.signUpForm = t.struct({
+      email: Email,
+      firstName: t.String,
+      lastName: t.String,
+      age: Age
+    })
+  }
+
+  @autobind
+  onPress() {
+    const value = this._refSignUpForm.getValue() // use that ref to get the form value
+    console.log('value: ', value)
+  }
+
+  render() {
+    // const Form = t.form.Form
+
+    return (
+      <MContainer scrollable>
+        <Card title='Seja muito bem vindo a melhor fonte de informação.'>
+          <Avatar
+            xlarge
+            rounded
+            source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }}
+            onPress={() => console.log('Works!')}
+            activeOpacity={0.7}
+            containerStyle={{ alignSelf: 'center' }}
+          />
+          <MForm
+            ref={form => this._refSignUpForm = form}
+            type={this.signUpForm}
+          />
+          <MButton
+            title='SIGN UP'
+            onPress={this.onPress}
+          />
+        </Card>
+      </MContainer>
+
+    )
+  }
+}

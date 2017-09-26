@@ -7,7 +7,7 @@ interface ViewProps extends ViewProperties {
 }
 const MView: React.SFC<ViewProps> = (props) => {
     return props.scrollable ? (
-        <View style={{ flex: 1, backgroundColor: colors.primary }} {...props }>
+        <View style={{ flex: 1, backgroundColor: colors.secondarylight }} {...props }>
             <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
                 {props.children}
             </ScrollView>

@@ -1,10 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
 import { Card, Button, FormLabel, FormInput } from 'react-native-elements'
 import { onSignIn } from '../../security'
+import { MContainer } from '../../components'
 
 export default ({ navigation }) => (
-  <View style={{ paddingVertical: 20 }}>
+  <MContainer>
     <Card>
       <FormLabel>Email</FormLabel>
       <FormInput placeholder='Email address...' />
@@ -20,5 +20,5 @@ export default ({ navigation }) => (
         }}
       />
     </Card>
-  </View>
+  </MContainer>
 )
