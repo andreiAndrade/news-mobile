@@ -1,19 +1,21 @@
 import React from 'react'
-import { Card, Button, FormLabel, FormInput } from 'react-native-elements'
+import { Card } from 'react-native-elements'
+import t from 'tcomb-form-native'
 import { onSignIn } from '../../security'
-import { MContainer } from '../../components'
+import { MContainer, MButton, Email, MForm } from '../../components'
 
+const signInForm = t.struct({
+  email: Email,
+  password: t.String
+})
 export default ({ navigation }) => (
   <MContainer>
     <Card>
-      <FormLabel>Email</FormLabel>
-      <FormInput placeholder='Email address...' />
-      <FormLabel>Password</FormLabel>
-      <FormInput secureTextEntry placeholder='Password...' />
+      <MForm
+        type={signInForm}
+      />
 
-      <Button
-        buttonStyle={{ marginTop: 20 }}
-        backgroundColor='#03A9F4'
+      <MButton
         title='SIGN IN'
         onPress={() => {
           onSignIn().then(() => navigation.navigate('SignedIn'))

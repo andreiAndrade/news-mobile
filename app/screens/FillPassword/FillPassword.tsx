@@ -13,7 +13,7 @@ const fillPasswordForm = t.struct({
 export default ({ navigation }) => {
   return (
     <MContainer scrollable>
-      <Card title='Para finalizar precisamos que você nos informe uma senha.'>
+      <Card title='Por favor, verifique seu email e nos informe a senha que recebeu. Em seguida escolha uma nova senha.'>
         <MForm
           type={fillPasswordForm}
         />

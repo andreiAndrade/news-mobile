@@ -1,2 +1,2 @@
-import { createRootNavigator, SignedIn, SignedOut } from './ApplicationRouter'
-export { createRootNavigator, SignedIn, SignedOut }
+import { createRootNavigator } from './ApplicationRouter'
+export { createRootNavigator }

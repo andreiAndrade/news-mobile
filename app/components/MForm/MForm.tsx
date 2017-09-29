@@ -8,7 +8,7 @@ const templates = {
     textbox: Textbox
 }
 
-export default class MForm extends React.Component<any, any> {
+class MForm extends React.Component<any, any> {
 
     _refForm: any
 
@@ -26,3 +26,5 @@ export default class MForm extends React.Component<any, any> {
         )
     }
 }
+
+export default MForm

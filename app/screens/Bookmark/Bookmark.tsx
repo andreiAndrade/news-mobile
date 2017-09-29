@@ -31,10 +31,10 @@ const news = [
   }
 ]
 
-export default ({navigation}) => (
+export default () => (
   <MContainer scrollable>
     {news.map(({ key, title, description }) => (
-      <TouchableOpacity key={key} onPress={() => navigation.navigate('NewsDetail')}>
+      <TouchableOpacity key={key} onPress={() => alert('Press')}>
         <Card
           title={title}
           image={{ uri: 'https://i.pinimg.com/600x315/d4/09/17/d409174d62fc768e9e6690c0e1c4143f.jpg' }}>

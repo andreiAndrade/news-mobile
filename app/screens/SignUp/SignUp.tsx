@@ -3,8 +3,7 @@ import { Card, Avatar } from 'react-native-elements'
 import t from 'tcomb-form-native'
 import autobind from 'autobind-decorator'
 
-import { MButton, MContainer, MForm } from '../../components'
-import { Email, Age } from '../../utils/FormInputTypes'
+import { MButton, MContainer, MForm, Age, Email } from '../../components'
 
 export default class SignUp extends React.Component<any, any> {
 
@@ -30,8 +29,6 @@ export default class SignUp extends React.Component<any, any> {
   }
 
   render() {
-    // const Form = t.form.Form
-
     return (
       <MContainer scrollable>
         <Card title='Seja muito bem vindo a melhor fonte de informação.'>
