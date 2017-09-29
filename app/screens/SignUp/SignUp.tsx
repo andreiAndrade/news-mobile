@@ -24,8 +24,9 @@ export default class SignUp extends React.Component<any, any> {
 
   @autobind
   onPress() {
-    const value = this._refSignUpForm.getValue() // use that ref to get the form value
-    console.log('value: ', value)
+    // const value = this._refSignUpForm.getValue() // use that ref to get the form value
+    // console.log('value: ', value)
+    this.props.navigation.navigate('FillPassword')
   }
 
   render() {

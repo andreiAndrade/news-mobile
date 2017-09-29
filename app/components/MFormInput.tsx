@@ -1,40 +1,57 @@
 import React from 'react'
-import { FormInput } from 'react-native-elements'
+import { View, Text } from 'react-native'
+import { FormInput, FormLabel, FormValidationMessage } from 'react-native-elements'
 import { colors } from '../assets/styles'
 
 interface State {
     color: string
 }
 
+const focusedColor = colors.primary
+const errorColor = colors.primaryHighlight
+
 export default class MFormInput extends React.Component<FormInput.propTypes, State> {
-    constructor() {
-        super()
-        this.state = {color: undefined}
-    }
+    _color = undefined
+    _focused = false
 
     onFocus = () => {
-        this.setState({
-            color: colors.primary
-        })
+        this._color = focusedColor
+        this._focused = true
+
+        this.forceUpdate()
     }
 
     onBlur = () => {
-        this.setState({
-            color: undefined
-        })
+        this._color = this.props.hasError ? errorColor : undefined
+        this._focused = false
+
+        this.forceUpdate()
+    }
+
+    componentWillReceiveProps(props) {
+        this._color = this._focused ? focusedColor : props.hasError ? errorColor : undefined
     }
 
     render() {
+        const label = this.props.label ? <FormLabel labelStyle={this._color ? { color: this._color } : {}} >{this.props.label}</FormLabel> : null
+        const help = this.props.help ? <Text style={this.props.helpBlockStyle}>{this.props.help}</Text> : null
+        const error = this.props.hasError ? <FormValidationMessage labelStyle={{ color: this._color }}>{this.props.error}</FormValidationMessage> : null
+
         console.log(this)
         return (
-            <FormInput
-                {...this.props}
-                containerStyle={this.state.color ? {borderBottomColor: this.state.color} : {}}
-                selectionColor={this.state.color || 'lightgray'}
-                inputStyle={this.state.color ? {color: this.state.color} : {}}
-                onFocus={() => this.onFocus()}
-                onBlur={() => this.onBlur()}
-            />
+            <View>
+                {label}
+                <FormInput
+                    {...this.props}
+                    containerStyle={this._color ? { borderBottomColor: this._color } : {}}
+                    selectionColor={this._color || 'lightgray'}
+                    inputStyle={this._color ? { color: this._color } : {}}
+                    onFocus={() => this.onFocus()}
+                    onBlur={() => this.onBlur()}
+                />
+                {help}
+                {error}
+            </View>
         )
     }
 }
