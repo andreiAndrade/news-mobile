@@ -34,9 +34,9 @@ public class MainApplication extends Application implements ReactApplication {
     return mReactNativeHost;
   }
 
-  @Override
+
   protected String getJSMainModuleName() {
-    return "artifacts/index.android";
+    return "artifacts/App.js";
   }
 
   @Override
