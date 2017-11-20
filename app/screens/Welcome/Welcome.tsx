@@ -3,7 +3,7 @@ import { View, ImageBackground, Modal, WebView } from 'react-native'
 import { MButton } from '../../components'
 import { colors } from '../../assets/styles'
 
-export default class Welcome extends React.Component {
+export default class Welcome extends React.Component<any, any> {
 
   constructor(props) {
     super(props)
@@ -14,13 +14,13 @@ export default class Welcome extends React.Component {
 
   feedlyAuthHandler(page) {
     if (page && page.url && page.url.includes('?code=')) {
-      this.setState({modalVisible: false})
+      this.setState({ modalVisible: false })
       this.props.navigation.navigate('SignedIn')
     }
   }
 
   render() {
-    const navigation = this.props.navigation;
+    // const navigation = this.props.navigation
     return (
       <ImageBackground style={{
         flex: 1,
@@ -45,16 +45,8 @@ export default class Welcome extends React.Component {
               onPress={() => this.setState({ modalVisible: false })}
             />
           </Modal>
-          <MButton title='SIGN UP' onPress={() => navigation.navigate('SignUp')} backgroundColor={colors.primary} />
-          <MButton title='CONTINUE FACEBOOK' backgroundColor={colors.facebookPrimary} />
-          <MButton title='CONTINUE WITH GOOGLE' backgroundColor={colors.googlePrimary} 
-            onPress={() => console.log('google')}
-          />
           <MButton title='CONTINUE WITH FEEDLY' backgroundColor={colors.googlePrimary}
             onPress={() => this.setState({ modalVisible: true })}
-          />
-          <MButton title='SIGN IN' textStyle={{ color: colors.dark }} backgroundColor={colors.light}
-            onPress={() => navigation.navigate('SignIn')}
           />
         </View>
       </ImageBackground >
