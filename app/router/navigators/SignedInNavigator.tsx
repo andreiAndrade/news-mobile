@@ -47,6 +47,7 @@ export default TabNavigator(
       }
     },
     {
+      lazy: true,
       tabBarOptions: {
         style: {
           paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0

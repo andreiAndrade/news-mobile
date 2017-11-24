@@ -1,7 +1,10 @@
 import React from 'react'
 import { View, ImageBackground, Modal, WebView } from 'react-native'
+import {split} from 'lodash'
 import { MButton } from '../../components'
 import { colors } from '../../assets/styles'
+
+import AuthService from '../../services/AuthService'
 
 export default class Welcome extends React.Component<any, any> {
 
@@ -13,10 +16,19 @@ export default class Welcome extends React.Component<any, any> {
   }
 
   feedlyAuthHandler(page) {
-    if (page && page.url && page.url.includes('?code=')) {
+    if (page && page.url && page.url.includes('?code=') && !page.url.includes('callback')) {
+      console.log(page.url)
+      this.handleUrl(page.url)
       this.setState({ modalVisible: false })
       this.props.navigation.navigate('SignedIn')
     }
+  }
+
+  handleUrl(url) {
+    const queryParams = split(split(url, '?')[1], '&')
+    const codeParam = split(queryParams[0], '=')[1]
+    AuthService.token(codeParam)
+    console.log(codeParam)
   }
 
   render() {

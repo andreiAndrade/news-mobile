@@ -9,21 +9,16 @@ const Textbox: React.SFC<any> = (locals) => {
 
     const stylesheet = locals.stylesheet
     let formGroupStyle = stylesheet.formGroup.normal
-    let controlLabelStyle = stylesheet.controlLabel.normal
-    let textboxStyle = stylesheet.textbox.normal
     let textboxViewStyle = stylesheet.textboxView.normal
     let helpBlockStyle = stylesheet.helpBlock.normal
 
     if (locals.hasError) {
         formGroupStyle = stylesheet.formGroup.error
-        controlLabelStyle = stylesheet.controlLabel.error
-        textboxStyle = stylesheet.textbox.error
         textboxViewStyle = stylesheet.textboxView.error
         helpBlockStyle = stylesheet.helpBlock.error
     }
 
     if (locals.editable === false) {
-        textboxStyle = stylesheet.textbox.notEditable
         textboxViewStyle = stylesheet.textboxView.notEditable
     }
 
